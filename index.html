@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fantasy Footbal Stats by round</title>	
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="true">
+	<link href="normalize.css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Poppins:700" rel="stylesheet">
+	<link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<header class="narrow">
+		<h1 class="sans">Projected stats by average draft position</h1>
+	</header>
+
+	<figure id="top-chart">
+
+		<div class="fixed-axis"></div>
+		<div class="scroller"></div>
+
+	</figure>
+
+	<p class="narrow body">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+	</p>
+
+	<p class="narrow body">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+	</p>
+
+	<script src="d3.js"></script>
+	<script src="chart.js"></script>
+
+	<script>
+		d3.json('data.json', function(d) {
+			
+			var theChart = chart.initialize({
+				'chartBody' : '#top-chart .scroller',
+				'chartAxis' : '#top-chart .fixed-axis',
+				'data' : d
+			})
+
+		})
+	</script>
+
+</body>
+
+</html>

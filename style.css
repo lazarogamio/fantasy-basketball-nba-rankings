@@ -1,0 +1,32 @@
+html {
+	font-size: 14px;
+}
+
+.narrow {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sans {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+}
+
+.body {
+	font-family: 'Libre Baskerville', serif;
+	font-weight: 400;
+	font-size: 1.2em;
+	color: #333;
+	line-height: 1.5em;
+}
+
+.body a {
+	font-style: italic;
+}
+
+#top-chart {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	margin: 0;
+}
