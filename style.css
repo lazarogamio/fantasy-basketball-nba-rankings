@@ -25,8 +25,66 @@ html {
 	font-style: italic;
 }
 
+nav {
+	text-align: center;
+}
+
+.select-menu {
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.select-header-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	margin: 0 0 6px 0;
+}
+
 #top-chart {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	margin: 0;
+}
+
+.scroller {
+	position: relative;
+}
+
+.spindle-line-bd, .spindle-end-bd {
+	stroke-width: 5;
+	stroke: #000;
+	opacity: 0;
+}
+
+.tooltip-active .spindle-line-bd, .tooltip-active .spindle-end-bd {
+	opacity: 1;
+}
+
+.spindle-line-front {
+	stroke-width: 3;
+	stroke: #999;
+}
+
+.spindle-end-front {
+	fill: #999;
+}
+
+#tooltip {
+	display: none;
+	position: absolute;
+}
+
+#tooltip.tooltip-active {
+	display: block;
+}
+
+#tooltip > div {
+	width: 280px;
+	padding: 10px;
+	background: #fff;
+}
+
+.tt-name {
+	margin: 0;
+	font-size: 16px;
 }

@@ -24,17 +24,24 @@ var makeRankings = function(name) {
 	}
 
 	// ESPN
-	if ( adpConsesus.hasOwnProperty(name) && adpConsesus[name].hasOwnProperty('ESPN ') ) {
-		rankingObject.espn = parseFloat(adpConsesus[name]['ESPN '])	
+	if ( adpConsesus.hasOwnProperty(name) && adpConsesus[name].hasOwnProperty(' ESPN ') ) {
+		rankingObject.espn = parseFloat(adpConsesus[name][' ESPN '])	
 	} else {
 		rankingObject.espn = null
 	}
 
 	// CBS
-	if ( adpConsesus.hasOwnProperty(name) && adpConsesus[name].hasOwnProperty('CBS ') ) {
-		rankingObject.cbs = parseFloat(adpConsesus[name]['CBS '])	
+	if ( adpConsesus.hasOwnProperty(name) && adpConsesus[name].hasOwnProperty(' CBS ') ) {
+		rankingObject.cbs = parseFloat(adpConsesus[name][' CBS '])	
 	} else {
 		rankingObject.cbs = null
+	}
+
+	// FP
+	if ( adpConsesus.hasOwnProperty(name) && adpConsesus[name].hasOwnProperty('ADP ') ) {
+		rankingObject.fantasyPros = parseFloat(adpConsesus[name]['ADP '])	
+	} else {
+		rankingObject.fantasyPros = null
 	}
 
 	// Expert Best

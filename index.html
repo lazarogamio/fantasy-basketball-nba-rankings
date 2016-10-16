@@ -16,10 +16,50 @@
 		<h1 class="sans">Projected stats by average draft position</h1>
 	</header>
 
+	<nav>
+
+		<div class="select-menu">
+			<h4 class="sans select-header-label">Average draft pos.</h4>
+			<select id="rankings">
+				<option value="fantasyPros">Fantasy Pros</option>
+				<option value="espn">ESPN</option>
+				<option value="yahoo">Yahoo! Sports</option>
+				<option value="cbs">CBS</option>
+				<option value="expAvg">Expert average</option>
+			</select>
+		</div>
+
+		<div class="select-menu">
+			<h4 class="sans select-header-label">Stats</h4>
+			<select id="stats">
+				<option value="points">Points</option>
+				<option value="rebounds">Rebounds</option>
+				<option value="assists">Assists</option>
+				<option value="block">Blocks</option>
+				<option value="steals">Steals</option>
+				<option value="threes">Threes made</option>
+				<option value="to">Turnovers</option>
+				<option value="fgperc">FG%</option>
+				<option value="ftperc">FT%</option>
+				<option value="games">Games</option>
+				<option value="min">Minutes</option>
+			</select>
+		</div>
+
+	</nav>
+
 	<figure id="top-chart">
 
 		<div class="fixed-axis"></div>
-		<div class="scroller"></div>
+		<div class="scroller">
+			
+			<div id="tooltip">
+				<div>
+					<h5 class="tt-name"></h5> 
+				</div>
+			</div>
+
+		</div>
 
 	</figure>
 
@@ -33,6 +73,7 @@
 
 	<script src="d3.js"></script>
 	<script src="chart.js"></script>
+	<script src="filtering.js"></script>
 
 	<script>
 		d3.json('data.json', function(d) {
@@ -42,6 +83,13 @@
 				'chartAxis' : '#top-chart .fixed-axis',
 				'data' : d
 			})
+
+			theChart.render({
+				'x' : 'fantasyPros',
+				'y' : 'points'
+			})
+
+			filtering.initialize(theChart)
 
 		})
 	</script>
