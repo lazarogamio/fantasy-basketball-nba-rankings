@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fantasy Footbal Stats by round</title>	
+	<title>Fantasy basketball projected stats by average draft position</title>	
+	<meta name="author" content="Lazaro Gamio">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
+	<meta property="og:title" content="Fantasy basketball projected stats by average draft position" />
+	<meta property="og:image" content="http://lazarogamio.com/projects/fantasy-basketball-nba-rankings/draft-picks-promo-image.jpg">
 	<link href="normalize.css" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Poppins:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i|Poppins:400,700" rel="stylesheet">
 	<link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
 
 	<header class="narrow">
-		<h1 class="sans">Projected stats by average draft position</h1>
+		<h3 class="sig">Interactive</h3>
+		<h1 class="sans-bold">Fantasy basketball projected stats by average draft position</h1>
 	</header>
+
+	<hr />
 
 	<nav>
 
+		<p class="fancy-prompt">&darr; Play with these glorious internet buttons &darr;</p>
+
 		<div class="select-menu">
-			<h4 class="sans select-header-label">Average draft pos.</h4>
+			<h4 class="sans-bold select-header-label">Average draft pos.</h4>
 			<select id="rankings">
 				<option value="fantasyPros">Fantasy Pros</option>
 				<option value="espn">ESPN</option>
@@ -30,7 +38,7 @@
 		</div>
 
 		<div class="select-menu">
-			<h4 class="sans select-header-label">Stats</h4>
+			<h4 class="sans-bold select-header-label">Stats</h4>
 			<select id="stats">
 				<option value="points">Points</option>
 				<option value="rebounds">Rebounds</option>
@@ -46,30 +54,92 @@
 			</select>
 		</div>
 
+		<div class="select-menu">
+			<h4 class="sans-bold select-header-label">Draft pos.</h4>
+			<select id="draft-pos">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+			</select>
+		</div>
+
+		<div class="select-menu">
+			<h4 class="sans-bold select-header-label">Players in league</h4>
+			<select id="draft-size">
+				<option value="8">8</option>
+				<option value="12">12</option>
+				<option value="16">16</option>
+			</select>
+		</div>
+
+		<div class="select-menu">
+			<h4 class="sans-bold select-header-label">Draft mode</h4>
+			<select id="draft-mode">
+				<option value="normal">Normal</option>
+				<option value="serpentine">Serpentine</option>
+			</select>
+		</div>
+
 	</nav>
+
+	<hr />
+
+	<nav class="narrow">
+		<span class="key draft-key"><span></span> Your draft picks</span>
+
+		<span class="key color-ramp"> <span></span> &nbsp; Minutes per game</span>
+
+	</nav>
+
+	<br /><br />
 
 	<figure id="top-chart">
 
-		<div class="fixed-axis"></div>
-		<div class="scroller">
-			
-			<div id="tooltip">
-				<div>
-					<h5 class="tt-name"></h5> 
-				</div>
-			</div>
+		<div class="scroller"></div>
+		<div class="fixed-axis axis-left"></div>
+		<div class="fixed-axis axis-right"></div>
+		
+		<div class="label-bottom">
+			&larr; <span></span> &rarr;
+		</div>
 
+		<div class="label-units">
+			<span></span><br/> &darr;
+		</div>
+
+		<div class="label-scroll">
+			Scroll right for more &rarr;
 		</div>
 
 	</figure>
 
+	<br />
+
 	<p class="narrow body">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+		<span class="small-caps-intro">Most fantasy draft</span> interfaces are extremely robust in displaying tabular data. However, <a href="https://i.ytimg.com/vi/2_UJ5k0kIUY/maxresdefault.jpg">a wall of numbers</a> isn't especially helpful in making a decision in thirty seconds. I made this tool to help myself make smarter picks for my fantasy draft, and I figured I'd share, <a href="https://cdn.meme.am/instances/500x/30757382.jpg">because internet</a>.
 	</p>
 
 	<p class="narrow body">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+		The yellow banding indicates your draft picks, given an initial draft position and draft methode. This feature is a tad buggy as you can currently have an initial pick larger than you r league size, so please be nice to it. In the chart, brighter colors indicate minutes played per game; this is an imperfect measure, as I simply took projected stats for minutes and divided them by games played. There's likely a nicer way to do that.
 	</p>
+
+	<p class="narrow body">
+		You can play with the menus to reorganize players by different ADP schemes from the large fantasy sites and change the value charted to different projected stats. All the data I'm using is from <a href="https://www.fantasypros.com/">FantasyPros</a>, specifically their <a href="https://www.fantasypros.com/nba/projections/overall.php">stats projections</a>, <a href="https://www.fantasypros.com/nba/adp/overall.php">average draft position</a>, and <a href="https://www.fantasypros.com/nba/rankings/overall.php">expert rankings</a> tables. Please don't sue me.
+	</p>
+
+	<p class="narrow body">
+		&mdash; <a href="https://twitter.com/LazaroGamio">Lazaro Gamio</a>
+	</p>
+
 
 	<script src="d3.js"></script>
 	<script src="chart.js"></script>
@@ -86,7 +156,13 @@
 
 			theChart.render({
 				'x' : 'fantasyPros',
-				'y' : 'points'
+				'y' : 'points',
+				'initialPick' : 1,
+				'leagueSize' : 8,
+				'draftMode' : 'normal',
+				'xLabel' : 'FantasyPros',
+				'yLabel' : 'Points'
+
 			})
 
 			filtering.initialize(theChart)

@@ -1,14 +1,54 @@
 html {
 	font-size: 14px;
+	padding: 20px 0;
 }
+
+.sig {
+	background: yellow;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	display: inline-block;
+	font-size: 12px;
+	line-height: 12px;
+	vertical-align: middle;
+	padding: 4px 6px;
+	margin: 0 auto; 
+}
+
+header h1 {
+	line-height: 1.4em;
+}
+
+header { text-align: center }
 
 .narrow {
 	max-width: 600px;
+	padding-left: 15px;
+	padding-right: 15px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
+hr {
+	max-width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	border: none;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	height: 4px;
+}
+
+
 .sans {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 400;
+}
+
+.sans-bold {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 700;
 }
@@ -18,12 +58,20 @@ html {
 	font-weight: 400;
 	font-size: 1.2em;
 	color: #333;
-	line-height: 1.5em;
+	line-height: 1.7em;
+}
+
+.fancy-prompt {
+	font-family: 'Libre Baskerville', serif;
+	font-weight: 400;
+	font-style: italic;
 }
 
 .body a {
 	font-style: italic;
 }
+
+/*FILTERS*/
 
 nav {
 	text-align: center;
@@ -31,32 +79,183 @@ nav {
 
 .select-menu {
 	display: inline-block;
-	padding: 0 10px;
+	padding: 10px;
 }
 
 .select-header-label {
-	font-size: 12px;
+	font-size: 11px;
+	color: #333;
 	text-transform: uppercase;
 	margin: 0 0 6px 0;
 }
 
+.key {
+	line-height: 16px;
+	vertical-align: middle;
+	color: #666;
+	font-family: 'Libre Baskerville', serif;
+	font-weight: 400;
+	font-style: italic;
+	display: inline-block;
+	margin: 0 20px;
+}
+
+.draft-key span {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: #f6f67c;
+	border: 1px solid #999;
+	margin-right: 6px;
+}
+
+.color-ramp span {
+	position: relative;
+	width: 50px;
+	height: 8px;
+	margin-right: 13px;
+	display: inline-block;
+	background: rgba(170,170,170,1);
+	background: -moz-linear-gradient(left, rgba(170,170,170,1) 0%, rgba(230,85,13,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(170,170,170,1)), color-stop(100%, rgba(230,85,13,1)));
+	background: -webkit-linear-gradient(left, rgba(170,170,170,1) 0%, rgba(230,85,13,1) 100%);
+	background: -o-linear-gradient(left, rgba(170,170,170,1) 0%, rgba(230,85,13,1) 100%);
+	background: -ms-linear-gradient(left, rgba(170,170,170,1) 0%, rgba(230,85,13,1) 100%);
+	background: linear-gradient(to right, rgba(170,170,170,1) 0%, rgba(230,85,13,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aaaaaa', endColorstr='#e6550d', GradientType=1 );
+}
+.color-ramp span:before, .color-ramp span:after {
+	position: absolute;
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	font-size: 10px;
+	line-height: 10px;
+	font-weight: 700;
+	color: #666;
+	top: 0px;
+}
+
+.color-ramp span:before {
+	content: '14';
+	right: 54px;
+}
+
+.color-ramp span:after {
+	content: '38';
+	left: 54px;
+	
+}
+
+/*CHART CONTAINER*/
+
 #top-chart {
-	overflow-x: scroll;
-	overflow-y: hidden;
+	overflow: visible;
 	margin: 0;
+	position: relative;
+	z-index: 2000;
 }
 
 .scroller {
 	position: relative;
+	overflow-x: scroll;
+}
+
+.fixed-axis {
+	position: absolute;
+	top: 0;
+	background: rgba(255,255,255,0.95)
+}
+
+.fixed-axis text {
+	fill: #666;
+	font-family: 'Libre Baskerville', serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.fixed-axis .domain { display: none }
+.fixed-axis.axis-left { left: 0px }
+.fixed-axis.axis-right { right: 0px }
+
+.label-bottom, .label-units, .label-scroll {
+	position: absolute;
+	font-family: 'Libre Baskerville', serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.label-bottom {
+	bottom: 20px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.label-units {
+	left: 25px;
+	top: -10px;
+}
+
+.label-scroll {
+	right: 25px;
+	top: -10px;
+}
+
+/*CHART ELEMENTS*/
+
+.band {
+	fill: #f6f67c;
+	opacity: 0;
+	stroke: #fff;
+}
+
+.band.active-band {
+	opacity: 1
+}
+
+.band-label {
+	text-anchor: middle;
+	font-family: 'Poppins', sans-serif;
+	fill: #777;
+	font-weight: 700;
+	font-size: 10px;
+}
+
+.draftMode-serpentine .band-label:nth-child(odd) { text-anchor: start } 
+.draftMode-serpentine .band-label:nth-child(even) { text-anchor: end } 
+
+.chart-axis-lines text, .chart-axis-lines .domain {
+	display: none;
+}
+
+.chart-axis-bottom line {
+	stroke: #333;
+}
+
+.chart-axis-bottom text {
+	font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic;
+	fill: #999;
+}
+
+.chart-axis-lines line {
+	stroke: #aaa;
+	stroke-width: .5; 
 }
 
 .spindle-line-bd, .spindle-end-bd {
-	stroke-width: 5;
 	stroke: #000;
 	opacity: 0;
 }
 
-.tooltip-active .spindle-line-bd, .tooltip-active .spindle-end-bd {
+.spindle-line-bd { stroke-width: 7 }
+.spindle-end-bd { stroke-width: 4 }
+
+.spindle-focuser {
+	stroke-width: 1;
+	stroke: rgba(0,0,0,0.6);
+	opacity: 0;
+}
+
+.tooltip-active .spindle-line-bd, .tooltip-active .spindle-end-bd, .tooltip-active .spindle-focuser {
 	opacity: 1;
 }
 
@@ -69,22 +268,20 @@ nav {
 	fill: #999;
 }
 
-#tooltip {
+/*TOOLTIP*/
+
+.spindle-text {
 	display: none;
-	position: absolute;
 }
 
-#tooltip.tooltip-active {
+.spindle-text.tooltip-active {
 	display: block;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+	font-size: 12px;
 }
 
-#tooltip > div {
-	width: 280px;
-	padding: 10px;
-	background: #fff;
-}
+.spindle-text.snap-left { text-anchor: start }
+.spindle-text.snap-center { text-anchor: middle }
+.spindle-text.snap-right { text-anchor: end }
 
-.tt-name {
-	margin: 0;
-	font-size: 16px;
-}
